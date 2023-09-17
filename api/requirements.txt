@@ -1,0 +1,10 @@
+asgiref==3.7.2
+black==23.7.0
+Django==4.2.5
+django-stubs==4.2.1
+djangorestframework==3.14.0
+flake8==6.0.0
+isort==5.10.1
+mypy==1.4.1
+pytest-django==4.5.2
+sqlparse==0.4.4
