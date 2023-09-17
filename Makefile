@@ -19,10 +19,10 @@ check:
 	docker compose run --rm web mypy .
 
 lint:
-	docker compose run --rm web isort .
-	docker compose run --rm web black .
-	docker compose run --rm web flake8 .
-	docker compose run --rm web mypy .
+	docker compose run --rm -T web isort .
+	docker compose run --rm -T web black .
+	docker compose run --rm -T web flake8 .
+	docker compose run --rm -T web mypy .
 
 pytest:
 	docker compose run --rm web pytest
