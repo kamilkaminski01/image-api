@@ -21,6 +21,7 @@ class UserManager(BaseUserManager):
         user = self.create_user(email, password, **extra_fields)
         user.is_superuser = True
         user.is_staff = True
+        user.account_tier = User.AccountTierChoices.ENTERPRISE
         user.save()
         return user
 
