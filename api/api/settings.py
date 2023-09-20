@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     "users",
     "images",
     "thumbnails",
+    "account_tiers",
 ]
 
 MIDDLEWARE = [

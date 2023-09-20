@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.http import HttpRequest
 from django.utils.html import format_html
 
 from images.utils import does_file_exist
@@ -17,6 +18,9 @@ class ThumbnailAdmin(admin.ModelAdmin):
             '<img src="{url}" width=50px height=50px/>',
             url=obj.thumbnail.url,
         )
+
+    def has_add_permission(self, request: HttpRequest) -> bool:
+        return False
 
 
 admin.site.register(Thumbnail, ThumbnailAdmin)

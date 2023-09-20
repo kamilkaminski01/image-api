@@ -18,10 +18,16 @@ def generate_thumbnail(image_file: str, width: int, height: int):
     return thumbnail_io.getvalue()
 
 
-def create_thumbnail_for_user(
-    user: User, image: Image, filename: str, height: int
-) -> Thumbnail:
-    generated_thumbnail = generate_thumbnail(image.image.file, height, height)
-    thumbnail = Thumbnail.objects.create(user=user, image=image)
-    thumbnail.thumbnail.save(f"{height}px-{filename}", ContentFile(generated_thumbnail))
-    return thumbnail
+def create_thumbnail_for_user(user: User, image: Image, filename: str):
+    thumbnail_sizes = user.account_tier.thumbnail_sizes
+    if isinstance(thumbnail_sizes, int):
+        thumbnail_sizes = [thumbnail_sizes]
+    for thumbnail_size in thumbnail_sizes:
+        generated_thumbnail = generate_thumbnail(
+            image.image.file, thumbnail_size, thumbnail_size
+        )
+        thumbnail = Thumbnail.objects.create(user=user, image=image)
+        thumbnail.thumbnail.save(
+            f"{thumbnail_size}px-{filename}", ContentFile(generated_thumbnail)
+        )
+    return image

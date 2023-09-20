@@ -1,0 +1,92 @@
+[
+  {
+    "model": "account_tiers.accounttier",
+    "pk": 1,
+    "fields": {
+      "name": "Basic",
+      "thumbnail_sizes": 200
+    }
+  },
+  {
+    "model": "account_tiers.accounttier",
+    "pk": 2,
+    "fields": {
+      "name": "Premium",
+      "thumbnail_sizes": [200, 400],
+      "include_original_image_url": true
+    }
+  },
+  {
+    "model": "account_tiers.accounttier",
+    "pk": 3,
+    "fields": {
+      "name": "Enterprise",
+      "thumbnail_sizes": [200, 400],
+      "include_original_image_url": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "account_tier": 3,
+      "password": "pbkdf2_sha256$390000$cQgiZS63wZnG0ZkYAk3aTy$8p06fdm7ackSvfJNvHfkbrgi62Afd0nCJc85W8R3AhA=",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true,
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@admin.com",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "account_tier": 1,
+      "password": "pbkdf2_sha256$390000$cQgiZS63wZnG0ZkYAk3aTy$8p06fdm7ackSvfJNvHfkbrgi62Afd0nCJc85W8R3AhA=",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "first_name": "Basic",
+      "last_name": "User",
+      "email": "basic@user.com",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "account_tier": 2,
+      "password": "pbkdf2_sha256$390000$cQgiZS63wZnG0ZkYAk3aTy$8p06fdm7ackSvfJNvHfkbrgi62Afd0nCJc85W8R3AhA=",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "first_name": "Premium",
+      "last_name": "User",
+      "email": "premium@user.com",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "account_tier": 3,
+      "password": "pbkdf2_sha256$390000$cQgiZS63wZnG0ZkYAk3aTy$8p06fdm7ackSvfJNvHfkbrgi62Afd0nCJc85W8R3AhA=",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "first_name": "Enterprise",
+      "last_name": "User",
+      "email": "enterprise@user.com",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

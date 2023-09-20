@@ -1,4 +1,4 @@
-.PHONY: build run recreate superuser check lint pytest migrations migrate clear
+.PHONY: build run recreate initial-data superuser check lint pytest migrations migrate clear
 
 build:
 	docker compose build
@@ -8,6 +8,9 @@ run:
 
 recreate:
 	docker compose up --build --force-recreate
+
+initial-data:
+	docker compose run --rm web python manage.py initialize_data
 
 superuser:
 	docker compose run --rm web python manage.py createsuperuser

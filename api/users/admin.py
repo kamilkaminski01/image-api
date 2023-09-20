@@ -1,5 +1,9 @@
+from typing import List
+
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import Group
+from django.http import HttpRequest
 
 from .models import User
 
@@ -13,8 +17,13 @@ class UsersAdmin(UserAdmin):
         "account_tier",
         "is_staff",
     ]
-    readonly_fields = ["date_joined", "last_login"]
     ordering = ("email",)
+
+    def get_readonly_fields(self, request: HttpRequest, obj=None) -> List:
+        if obj is None:
+            return ["date_joined", "last_login"]
+        else:
+            return ["account_tier", "date_joined", "last_login"]
 
     add_fieldsets = (
         (
@@ -75,3 +84,4 @@ class UsersAdmin(UserAdmin):
 
 
 admin.site.register(User, UsersAdmin)
+admin.site.unregister(Group)
