@@ -3,6 +3,7 @@ black==23.7.0
 Django==4.2.5
 django-stubs==4.2.1
 djangorestframework==3.14.0
+factory-boy==3.2.1
 flake8==6.0.0
 isort==5.10.1
 mypy==1.4.1

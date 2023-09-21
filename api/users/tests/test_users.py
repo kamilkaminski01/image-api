@@ -1,13 +1,21 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
+from account_tiers.models import BasicAccountTierChoices
+from account_tiers.tests.factories import AccountTierFactory
+
 
 class TestUserManager(TestCase):
+    def setUp(self) -> None:
+        self.account_tier = AccountTierFactory(name=BasicAccountTierChoices.ENTERPRISE)
+
     def test_create_user(self):
         User = get_user_model()
-        user = User.objects.create_user(email="normal@user.com", password="password")
+        user = User.objects.create_user(
+            email="normal@user.com", password="password", account_tier=self.account_tier
+        )
         self.assertEqual(user.email, "normal@user.com")
-        self.assertEqual(user.account_tier, "basic")
+        self.assertEqual(user.account_tier, self.account_tier)
         self.assertTrue(user.is_active)
         self.assertFalse(user.is_staff)
         self.assertFalse(user.is_superuser)
