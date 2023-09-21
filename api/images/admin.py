@@ -7,8 +7,8 @@ from .utils import does_file_exist
 
 
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ["image_preview", "user", "image"]
-    readonly_fields = ["user", "image"]
+    list_display = ["image_preview", "user", "image", "url_expiration_time"]
+    readonly_fields = ["user", "image", "url_expiration_time"]
 
     def image_preview(self, obj: Image) -> str:
         if not does_file_exist(obj.image):

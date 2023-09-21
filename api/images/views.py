@@ -1,8 +1,10 @@
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import CreateAPIView, ListCreateAPIView
 from rest_framework.permissions import IsAuthenticated
 
+from account_tiers.permissions import HasEnabledExpiringUrls
+
 from .models import Image
-from .serializers import ImageSerializer
+from .serializers import ExpiringImageSerializer, ImageSerializer
 
 
 class ImageListCreateAPIView(ListCreateAPIView):
@@ -11,3 +13,8 @@ class ImageListCreateAPIView(ListCreateAPIView):
 
     def get_queryset(self):
         return Image.objects.filter(user=self.request.user)
+
+
+class ExpiringImageCreateAPIView(CreateAPIView):
+    permission_classes = [IsAuthenticated, HasEnabledExpiringUrls]
+    serializer_class = ExpiringImageSerializer

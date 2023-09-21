@@ -2,7 +2,7 @@ from django.db import models
 
 from users.models import User
 
-from .utils import hash_file, validate_file_extension
+from .utils import hash_file, validate_file_extension, validate_url_expiration_time
 
 
 def _upload_image_to_images(instance, filename: str) -> str:
@@ -18,6 +18,13 @@ class Image(models.Model):
         upload_to=_upload_image_to_images,
         validators=[validate_file_extension],
         verbose_name="image",
+    )
+
+    url_expiration_time = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        validators=[validate_url_expiration_time],
+        help_text="The time that an additional url of the image expires in seconds",
     )
 
     def __str__(self):

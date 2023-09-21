@@ -22,7 +22,8 @@
     "fields": {
       "name": "Enterprise",
       "thumbnail_sizes": [200, 400],
-      "include_original_image_url": true
+      "include_original_image_url": true,
+      "enabled_expiring_urls": true
     }
   },
   {

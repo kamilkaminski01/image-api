@@ -32,3 +32,8 @@ def does_file_exist(file: FieldFile) -> bool:
         except FileNotFoundError:
             return False
     return True
+
+
+def validate_url_expiration_time(value):
+    if value < 300 or value > 30000:
+        raise ValidationError("URL expiration time must be between 300 and 30000.")

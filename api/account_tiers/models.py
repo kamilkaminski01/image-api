@@ -26,6 +26,11 @@ class AccountTier(models.Model):
         help_text="Include a url to the originally uploaded file",
     )
 
+    enabled_expiring_urls = models.BooleanField(
+        default=False,
+        help_text="Ability to create expiring image urls",
+    )
+
     def __str__(self):
         return self.name
 
